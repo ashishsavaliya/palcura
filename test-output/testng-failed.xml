@@ -13,6 +13,7 @@
     <classes>
       <class name="testCase.TC02_Login">
         <methods>
+          <include name="login"/>
           <include name="openBrowser"/>
         </methods>
       </class>

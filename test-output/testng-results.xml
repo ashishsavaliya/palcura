@@ -2,12 +2,12 @@
 <testng-results total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-09-25T15:41:52Z" name="Palcura Web" finished-at="2018-09-25T15:42:36Z" duration-ms="43889">
+  <suite started-at="2018-09-25T17:40:40Z" name="Palcura Web" finished-at="2018-09-25T17:41:04Z" duration-ms="23277">
     <groups>
     </groups>
-    <test started-at="2018-09-25T15:41:52Z" name="Test Suite palcura" finished-at="2018-09-25T15:42:36Z" duration-ms="43889">
+    <test started-at="2018-09-25T17:40:40Z" name="Test Suite palcura" finished-at="2018-09-25T17:41:04Z" duration-ms="23277">
       <class name="testCase.TC02_Login">
-        <test-method signature="login(java.lang.String, java.lang.String)" started-at="2018-09-25T15:41:52Z" name="login" finished-at="2018-09-25T15:42:09Z" duration-ms="16850" status="PASS">
+        <test-method signature="login(java.lang.String, java.lang.String)" started-at="2018-09-25T17:40:40Z" name="login" finished-at="2018-09-25T17:40:46Z" duration-ms="5648" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -23,7 +23,7 @@
         </test-method>
       </class>
       <class name="testCase.TC03_Profile">
-        <test-method is-config="true" signature="openBrowser(java.lang.String, java.lang.String)" started-at="2018-09-25T15:40:55Z" name="openBrowser" finished-at="2018-09-25T15:41:52Z" duration-ms="56655" status="PASS">
+        <test-method is-config="true" signature="openBrowser(java.lang.String, java.lang.String)" started-at="2018-09-25T17:40:28Z" name="openBrowser" finished-at="2018-09-25T17:40:40Z" duration-ms="12416" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -37,7 +37,7 @@
             </param>
           </params>
         </test-method>
-        <test-method signature="editProfile()" started-at="2018-09-25T15:42:09Z" name="editProfile" finished-at="2018-09-25T15:42:36Z" duration-ms="26846" status="PASS">
+        <test-method signature="editProfile()" started-at="2018-09-25T17:40:46Z" name="editProfile" finished-at="2018-09-25T17:41:04Z" duration-ms="17620" status="PASS">
         </test-method>
       </class>
     </test>
