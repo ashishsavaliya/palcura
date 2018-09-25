@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Palcura Web" verbose="2">
+
+<parameter name="browserName" value="Chrome" />
+<parameter name="projectURL" value="http://192.168.1.250:8083/Palcura" />
+<parameter name="userName" value="ashishsitter@mailinator.com" />
+<parameter name="password" value="321321321" />
+
+<!-- <listeners>
+        <listener class-name="retryFailedTestCases.RetryListenerClass"/>
+</listeners> -->
+
+<test name="Test Suite palcura">			
+  		<classes>
+			<!-- <class name='testCase.TC01_Register' /> -->
+			<class name='testCase.TC02_Login' />
+			<class name='testCase.TC03_Profile' />
+		</classes>
+  </test>
+</suite>

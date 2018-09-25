@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Palcura Web]" verbose="2">
+  <parameter name="projectURL" value="http://192.168.1.250:8083/Palcura"/>
+  <parameter name="password" value="321321321"/>
+  <parameter name="browserName" value="Chrome"/>
+  <parameter name="userName" value="ashishsitter@mailinator.com"/>
+  <test name="Test Suite palcura(failed)" preserve-order="false">
+    <parameter name="projectURL" value="http://192.168.1.250:8083/Palcura"/>
+    <parameter name="password" value="321321321"/>
+    <parameter name="browserName" value="Chrome"/>
+    <parameter name="userName" value="ashishsitter@mailinator.com"/>
+    <classes>
+      <class name="testCase.TC02_Login">
+        <methods>
+          <include name="openBrowser"/>
+        </methods>
+      </class>
+      <class name="testCase.TC03_Profile">
+        <methods>
+          <include name="editProfile"/>
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>
