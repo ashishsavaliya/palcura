@@ -65,6 +65,7 @@ public class SeleniumUtilis {
 	}
 
 	public void enterText(By locator, String value) {
+		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
 		highlightElement(ele);
 		ele.clear();
@@ -78,12 +79,14 @@ public class SeleniumUtilis {
 	Date time = new Date();
 
 	public void enterEmail(By locator, String value) {
+		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
 		highlightElement(ele);
 		ele.sendKeys(value + formatter.format(date) + "@mailinator.com");
 	}
 
 	public WebElement selectByIndex(By locator, int value) {
+		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
 		highlightElement(ele);
 		Select ddl = new Select(ele);
@@ -92,6 +95,7 @@ public class SeleniumUtilis {
 	}
 
 	public void selectByText(By locator, String value) {
+		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
 		highlightElement(ele);
 		Select ddl = new Select(ele);
@@ -99,6 +103,7 @@ public class SeleniumUtilis {
 	}
 
 	public void selectByValue(By locator, String value) {
+		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
 		highlightElement(ele);
 		Select ddl = new Select(ele);
@@ -106,6 +111,7 @@ public class SeleniumUtilis {
 	}
 
 	public String getFirstSelectedOption(By locator) {
+		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
 		highlightElement(ele);
 		Select ddl = new Select(ele);
@@ -115,6 +121,7 @@ public class SeleniumUtilis {
 	}
 
 	public List<WebElement> selectAllOptions(By locator) {
+		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
 		highlightElement(ele);
 		Select ddl = new Select(ele);
@@ -133,6 +140,7 @@ public class SeleniumUtilis {
 
 	public boolean existsElement(By locator) {
 		try {
+			explicitWait(locator);
 			WebElement ele = driver.findElement(locator);
 			highlightElement(ele);
 		} catch (NoSuchElementException e) {
@@ -154,10 +162,12 @@ public class SeleniumUtilis {
 	}
 
 	public String getText(By locator) {
+		explicitWait(locator);
 		return driver.findElement(locator).getText();
 	}
 
 	public void fileUpload(By locator, String path) {
+		explicitWait(locator);
 		explicitWait(locator);
 		File file = new File(path);
 		WebElement upload = driver.findElement(locator);
@@ -171,15 +181,16 @@ public class SeleniumUtilis {
 	}
 
 	public List<WebElement> elementList(By locator) {
+		explicitWait(locator);
 		return driver.findElements(locator);
 	}
 
 	public WebElement element(By locator) {
+		explicitWait(locator);
 		return driver.findElement(locator);
 	}
 
 	public void tackScreenShot(String filepath) throws IOException {
-		
 		TakesScreenshot scrShot = ((TakesScreenshot) driver);
 		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 		File DestFile = new File(filepath);
