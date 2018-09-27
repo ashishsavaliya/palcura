@@ -22,6 +22,8 @@ public class TC02_Login extends BaseClass {
 
 		if (txt_welcome == true) {
 			System.out.println("Login Successfull.");
+			objSeleutils.tackScreenShot("./Screenshots/LoginPass.png");
+			
 		}
 		
 		else {

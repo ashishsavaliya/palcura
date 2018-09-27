@@ -16,6 +16,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -40,7 +41,9 @@ public class SeleniumUtilis {
 
 		else if (browserName.equals("Chrome")) {
 			System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
-			driver = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("disable-infobars");
+			driver = new ChromeDriver(options);
 			openURL(projectURL);
 		}
 
@@ -60,16 +63,17 @@ public class SeleniumUtilis {
 	public void click(By locator) {
 		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
-		highlightElement(ele);
-		ele.click();
+		highlightElement(ele, true);
+		ele.click();		
 	}
-
+	
 	public void enterText(By locator, String value) {
 		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
-		highlightElement(ele);
+		highlightElement(ele, true);
 		ele.clear();
 		ele.sendKeys(value);
+		highlightElement(ele, false);
 	}
 
 	SimpleDateFormat formatter = new SimpleDateFormat("dMyyHmmss");
@@ -81,51 +85,56 @@ public class SeleniumUtilis {
 	public void enterEmail(By locator, String value) {
 		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
-		highlightElement(ele);
+		highlightElement(ele, true);
 		ele.sendKeys(value + formatter.format(date) + "@mailinator.com");
+		highlightElement(ele, false);
 	}
 
-	public WebElement selectByIndex(By locator, int value) {
+	public void selectByIndex(By locator, int value) {
 		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
-		highlightElement(ele);
+		highlightElement(ele, true);
 		Select ddl = new Select(ele);
 		ddl.selectByIndex(value);
-		return ele;
+		highlightElement(ele, false);
 	}
 
 	public void selectByText(By locator, String value) {
 		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
-		highlightElement(ele);
+		highlightElement(ele, true);
 		Select ddl = new Select(ele);
 		ddl.selectByVisibleText(value);
+		highlightElement(ele, false);
 	}
 
 	public void selectByValue(By locator, String value) {
 		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
-		highlightElement(ele);
+		highlightElement(ele, true);
 		Select ddl = new Select(ele);
 		ddl.deselectByValue(value);
+		highlightElement(ele, false);
 	}
 
 	public String getFirstSelectedOption(By locator) {
 		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
-		highlightElement(ele);
+		highlightElement(ele, true);
 		Select ddl = new Select(ele);
 		WebElement firstOption = ddl.getFirstSelectedOption();
 		String firstValue = firstOption.getText();
+		highlightElement(ele, false);
 		return firstValue;
 	}
 
 	public List<WebElement> selectAllOptions(By locator) {
 		explicitWait(locator);
 		WebElement ele = driver.findElement(locator);
-		highlightElement(ele);
+		highlightElement(ele, true);
 		Select ddl = new Select(ele);
 		List<WebElement> allOptions = ddl.getOptions();
+		highlightElement(ele, false);
 		return allOptions;
 	}
 
@@ -142,7 +151,7 @@ public class SeleniumUtilis {
 		try {
 			explicitWait(locator);
 			WebElement ele = driver.findElement(locator);
-			highlightElement(ele);
+			highlightElement(ele, true);
 		} catch (NoSuchElementException e) {
 			return false;
 		}
@@ -170,14 +179,20 @@ public class SeleniumUtilis {
 		explicitWait(locator);
 		explicitWait(locator);
 		File file = new File(path);
-		WebElement upload = driver.findElement(locator);
-		highlightElement(upload);
-		upload.sendKeys(file.getAbsolutePath());
+		WebElement ele = driver.findElement(locator);
+		highlightElement(ele, true);
+		ele.sendKeys(file.getAbsolutePath());
+		highlightElement(ele, false);
 	}
 
-	public void highlightElement(WebElement ele) {
-		JavascriptExecutor javascriptExecutor = ((JavascriptExecutor) driver);
-		javascriptExecutor.executeScript("arguments[0].style.border='1px solid blue'", ele);
+	public void highlightElement(WebElement ele, boolean isHeighlight) {
+		if (isHeighlight) {
+			JavascriptExecutor javascriptExecutor = ((JavascriptExecutor) driver);
+			javascriptExecutor.executeScript("arguments[0].style.border='1px solid blue'", ele);
+		} else {
+			JavascriptExecutor javascriptExecutor = ((JavascriptExecutor) driver);
+			javascriptExecutor.executeScript("arguments[0].style.border=''", ele);
+		}
 	}
 
 	public List<WebElement> elementList(By locator) {
@@ -191,10 +206,10 @@ public class SeleniumUtilis {
 	}
 
 	public void tackScreenShot(String filepath) throws IOException {
-		TakesScreenshot scrShot = ((TakesScreenshot) driver);
+		TakesScreenshot scrShot = (TakesScreenshot) driver;
 		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 		File DestFile = new File(filepath);
 		FileUtils.copyFile(SrcFile, DestFile);
-
 	}
+
 }
