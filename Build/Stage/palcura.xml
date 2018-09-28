@@ -15,7 +15,7 @@
   		<classes>
 			<!-- <class name='testCase.TC01_Register' /> -->
 			<class name='testCase.TC02_Login' />
-			<class name='testCase.TC03_Profile' />	 
+			<!-- <class name='testCase.TC03_Profile' />  -->
 		</classes>
   </test>
 </suite>

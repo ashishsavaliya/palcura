@@ -7,12 +7,15 @@
   <parameter name="userName" value="ashishsitter@mailinator.com"/>
   <test thread-count="5" name="Test Suite palcura(failed)" verbose="2">
     <classes>
-      <class name="testCase.TC03_Profile">
+      <class name="testCase.TC02_Login">
         <methods>
-          <include name="editProfile"/>
+          <include name="dashboard"/>
+          <include name="closeBrowser"/>
+          <include name="teardown"/>
           <include name="openBrowser"/>
+          <include name="createInstance"/>
         </methods>
-      </class> <!-- testCase.TC03_Profile -->
+      </class> <!-- testCase.TC02_Login -->
     </classes>
   </test> <!-- Test Suite palcura(failed) -->
 </suite> <!-- Failed suite [Palcura Web] -->

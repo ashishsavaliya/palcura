@@ -22,6 +22,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
@@ -53,6 +54,11 @@ public class SeleniumUtilis {
 			openURL(projectURL);
 		}
 		driver.manage().window().maximize();
+	}
+	
+	@AfterSuite
+	public void closeBrowser() {
+		openURL("D:\\Java\\workplace\\Palcura\\Reports\\finalReport.html");
 	}
 
 	public void openURL(String url) {
@@ -205,11 +211,12 @@ public class SeleniumUtilis {
 		return driver.findElement(locator);
 	}
 
-	public void tackScreenShot(String filepath) throws IOException {
+	public String tackScreenShot(String filepath) throws IOException {
 		TakesScreenshot scrShot = (TakesScreenshot) driver;
 		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 		File DestFile = new File(filepath);
 		FileUtils.copyFile(SrcFile, DestFile);
+		return filepath;
 	}
 
 }
